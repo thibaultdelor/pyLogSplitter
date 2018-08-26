@@ -5,9 +5,7 @@
 from typing import Optional
 from logging import LogRecord, Handler
 
-from dataclasses import dataclass
 
-@dataclass
 class SplitHandler(Handler):
     """A logging Handler that splits your logs between two handlers.
 
@@ -21,11 +19,17 @@ class SplitHandler(Handler):
     handler_2: Handler
     log_level_threshold: int
 
-    def __post_init__(self):
+    def __init__(self,
+                 handler_1: Handler,
+                 handler_2: Handler,
+                 log_level_threshold: int):
         super().__init__()
+        self.handler_1 = handler_1
+        self.handler_2 = handler_2
+        self.log_level_threshold = log_level_threshold
 
     def emit(self, record: LogRecord) -> None:
-        pass # pragma: no cover
+        pass  # pragma: no cover
 
     def handle(self, record: LogRecord) -> Optional[LogRecord]:
         if record.levelno < self.log_level_threshold:
