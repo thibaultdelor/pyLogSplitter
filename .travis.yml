@@ -1,11 +1,15 @@
 language: python
 matrix:
   include:
-    - python: 3.7
-      dist: xenial
-      sudo: true
-install: 
-  - pip install pipenv
-  - pipenv install --dev
-script: 
-  - pipenv run -- python -m unittest 
+  - python: 3.7
+    dist: xenial
+    sudo: true
+install:
+- pip install pipenv
+- pipenv install --dev
+script:
+- pipenv run -- coverage run --source=log_splitter -m unittest
+- pipenv run -- pipenv run -- coveralls
+env:
+  global:
+    secure: RYBS0lDNdN9w37vjI37SfLzTYgkXA8k9qeOBKnJZ/ImVgSYwVRsUBRh2Pcj3EZswjn4bAErRdJAFt83KVF6Y8YKPbnf/oQQySwjfF5jlEOghyck6CKo7tQjs5xKo02qyFMEj1SBLcPTZgIQSfKVFiGQGwepkkmFWv40i7Q+KkIz5UkimUfbIkqb2XU/uMjbrnoNYDqIauQr21Pf26kDqmGdGyC60zDrxy9q7HHAzMnbdpFnqXCQznfr45X0rEMex3aZzwmd8gzdbkw0HUlG06TyW90h9w4ab1EpOHAdQTN++SG58sSt5IsgXc827ITKKlVNIqDKeFo8eoVxFtdHcFRfVgF3KVq5sOZFwYzIGmVvS0PQ6PNiy4NUxjdCozRv/DjPdDWTvAYayJkTJZRbJZCi7Z+hKFc7/LDja3v2v34cbZvZVCv3RmKMDW8y3CNBI16/wSzPVZNDak7e82yIGn6Spztp8sl4qM8EfQbYSRZKlNses+VuKZUibJ+No4ehV7v5rrGoSg5F9X7GwP6ARPQmL/kNrrMiLbs2Ia1PdGvTNpkLQ3DPGWN04WhNB1tHQoF0iQ6OqvrAbUBvTHE5efnzORarf+7ZcckwptjdQCTCo30pLadZX+rA3XNhd+xlFJuK09PaEAAg9PUZbqSCrMMVqkIswHevjiEDgtHXE21M=

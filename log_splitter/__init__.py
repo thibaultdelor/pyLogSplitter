@@ -25,7 +25,7 @@ class SplitHandler(Handler):
         super().__init__()
 
     def emit(self, record: LogRecord) -> None:
-        pass
+        pass # pragma: no cover
 
     def handle(self, record: LogRecord) -> Optional[LogRecord]:
         if record.levelno < self.log_level_threshold:
